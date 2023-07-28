@@ -6,6 +6,31 @@ Five speech-related datasets are used in this project. These files are taken fro
 Machine Learning repository (Little, 2008, 2009; Naranjo et al., 2016; Sakar et al., 2013; Sakar et al., 2018) and 
 the references are provided in the corresponding sub-section below.
 
+## Setup
+
+* Updating conda
+
+Please update conda by running:
+
+`conda update -n base -c defaults conda`
+
+* Configuration of the environment
+
+Please create a conda virtual environment and install all required dependencies of this application by
+running: 
+
+`conda env create -f environment.yml`
+
+* Activating and deactivating the conda environment
+
+To activate this environment, please run:
+
+`conda activate pd_detector`
+
+To deactivate an active environment, please run the following command:
+
+`conda deactivate`
+
 ## References
 
 - Little, M. (2008) Parkinsons data set. UCI Machine Learning Repository.

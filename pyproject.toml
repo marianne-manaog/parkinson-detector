@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pd_detector"
+authors = [
+    {name = "Marianne Lyne Manaog", email = "marianne.manaog@ieee.org"},
+]
+description = "AI-driven, Cassandra-based Parkinson's Disease detector"
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = ["Parkinson's Disease", "Machine Learning", "Apache Cassandra"]
+license = {text = "Apache-2.0"}
+classifiers = [
+    "Frameworks :: Cassandra for DB and PySpark for ML",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "requests",
+    'importlib-metadata; python_version>="3.11"',
+]
+dynamic = ["version"]
+
+[tool.setuptools]
+packages = ["src"]

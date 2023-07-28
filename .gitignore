@@ -36,7 +36,7 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Unit tests / coverage reports
 htmlcov/
 .tox/
 .nox/
@@ -134,4 +134,4 @@ cython_debug/
 *.idea
 
 # Mac-related
-*.DS_Store
+*/.DS_Store
