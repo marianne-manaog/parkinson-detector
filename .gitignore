@@ -130,8 +130,9 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# PyCharm directory
+# PyCharm directories
 *.idea
+*.egg-info
 
 # Mac-related
 */.DS_Store

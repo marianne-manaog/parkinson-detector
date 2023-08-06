@@ -1,11 +1,6 @@
 # Cassandra and Machine Learning-driven Parkinson's Disease Detector
 This repository hosts Python codes to detect Parkinson's Disease leveraging speech data, Apache Cassandra's vector search similarity, and ensembles of Decision Trees.
 
-## Datasets
-Five speech-related datasets are used in this project. These files are taken from the University California Irvine
-Machine Learning repository (Little, 2008, 2009; Naranjo et al., 2016; Sakar et al., 2013; Sakar et al., 2018) and 
-the references are provided in the corresponding sub-section below.
-
 ## Setup
 
 * Updating conda
@@ -33,6 +28,20 @@ To install and build the codes as a Python package in editable mode from the top
 To deactivate an active environment, please run the following command:
 
 `conda deactivate`
+
+## Datasets
+Five speech-related datasets are used in this project. These files are taken from the University California Irvine
+Machine Learning repository (Little, 2008, 2009; Naranjo et al., 2016; Sakar et al., 2013; Sakar et al., 2018) and 
+the references are provided in the corresponding sub-section below.
+
+## Data analysis and creation of train and test datasets
+- The five speech datasets of interest are analysed via descriptive statistics as per the 
+module `src/analyse_data/analyse_speech_datasets.py`.
+- Thereafter, the datasets are standardised via the module `src/process_data/prepare_data.py`, which 
+ensures the target column `status` is named consistently (`1` for patients with Parkinson's Disease, 
+`0` for healthy subjects), that only the relevant columns are retained and that are renamed consistently too.
+- Eventually, the data are combined into two sets (train and test) via the module 
+`src/create_train_and_test_data/merge_speech_data.py`.
 
 ## References
 
