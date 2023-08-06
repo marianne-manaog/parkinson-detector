@@ -11,7 +11,6 @@ from src.constants import TARGET_COL_NAME
 from src.get_src_dir import get_src_path
 from src.process_data.constants import DATA_DIR_STR
 
-
 logging.basicConfig(level=logging.INFO)
 
 root_dir_str = str(get_src_path())
@@ -35,7 +34,8 @@ def analyse_dataset(csv_path: str) -> None:
     logging.info(f"The columns of the df are: {cols}.")
 
     for col in cols:
-        logging.info(f"The descriptive statistics of the df are: {data_df[col].describe()}.")
+        logging.info(
+            f"The descriptive statistics of the df are: {data_df[col].describe()}.")
 
     list_cols_nan = data_df.columns[data_df.isnull().any()].tolist()
     if len(list_cols_nan) > 0:
@@ -44,7 +44,8 @@ def analyse_dataset(csv_path: str) -> None:
         logging.info(f"There are no columns with missing values.")
 
     # 'status' column (0 = healthy, 1 = PD)
-    logging.info(f"The number of healthy vs PD subjects of the df is: {data_df[TARGET_COL_NAME].value_counts()}.")
+    logging.info(
+        f"The number of healthy vs PD subjects of the df is: {data_df[TARGET_COL_NAME].value_counts()}.")
 
 
 if __name__ == '__main__':
@@ -58,4 +59,5 @@ if __name__ == '__main__':
     ]
 
     for file_path in list_of_paths_of_files_to_analyse:
-        analyse_dataset(f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{file_path}")
+        analyse_dataset(
+            f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{file_path}")

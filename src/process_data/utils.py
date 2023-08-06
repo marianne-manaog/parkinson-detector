@@ -6,9 +6,10 @@ import os
 
 import pandas as pd
 
-from src.get_src_dir import get_src_path
-from src.process_data.constants import DATA_DIR_STR, PROCESSED_SUFFIX, CSV_FMT_STR
 from src.constants import TARGET_COL_NAME
+from src.get_src_dir import get_src_path
+from src.process_data.constants import (CSV_FMT_STR, DATA_DIR_STR,
+                                        PROCESSED_SUFFIX)
 
 root_dir_str = str(get_src_path())
 
@@ -39,10 +40,12 @@ def add_target_column(initial_file_path: str, target_col_name: str = TARGET_COL_
     if any(s in df_cols for s in expected_cols_tuple):
         if expected_cols_tuple[0] in df_cols:
             # Rename col for consistency wrt other 'status' cols in the other dfs
-            updated_df.rename(columns={expected_cols_tuple[0]: target_col_name}, inplace=True)
+            updated_df.rename(
+                columns={expected_cols_tuple[0]: target_col_name}, inplace=True)
         elif expected_cols_tuple[1] in df_cols:
             # Rename col for consistency wrt other 'status' cols in the other dfs
-            updated_df.rename(columns={expected_cols_tuple[1]: target_col_name}, inplace=True)
+            updated_df.rename(
+                columns={expected_cols_tuple[1]: target_col_name}, inplace=True)
     else:
         # Creating a new column called 'status' with 1s because all rows pertain to PD subjects (for the data of Max
         # Little in 2009)

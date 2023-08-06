@@ -11,7 +11,6 @@ from src.get_src_dir import get_src_path
 from src.process_data.constants import DATA_DIR_STR
 from src.process_data.utils import add_target_column, save_processed_df
 
-
 root_dir_str = str(get_src_path())
 
 
@@ -29,7 +28,8 @@ def generate_and_save_initial_processed_files() -> None:
     save_processed_df(naranjo_2016_csv_path, naranjo_2016_df_processed)
 
     sakar_2013_train_csv_path = 'Sakar_et_al_2013/train_data.csv'
-    sakar_2013_train_df_processed = add_target_column(sakar_2013_train_csv_path)
+    sakar_2013_train_df_processed = add_target_column(
+        sakar_2013_train_csv_path)
     save_processed_df(sakar_2013_train_csv_path, sakar_2013_train_df_processed)
 
     sakar_2013_test_csv_path = 'Sakar_et_al_2013/test_data.csv'
@@ -55,7 +55,7 @@ def process_csv(csv_file_path: str, cols_to_retain: list[str], new_column_names:
         cols_to_retain: list[str]
             The names of the columns to retain.
         new_column_names: list[str]
-            The names of the new columns.
+            The new names of the columns.
     """
     csv_full_path = f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{csv_file_path}"
     df = pd.read_csv(csv_full_path)
@@ -66,12 +66,15 @@ def process_csv(csv_file_path: str, cols_to_retain: list[str], new_column_names:
 
 # Process all speech datasets
 little_2008_csv_path = 'Little_2008/parkinsons_data.csv'
-little_2008_copy_df = pd.read_csv(f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{little_2008_csv_path}")
+little_2008_copy_df = pd.read_csv(
+    f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{little_2008_csv_path}")
 little_2008_copy_df_path = 'Little_2008/parkinsons_data_processed.csv'
-little_2008_copy_df.to_csv(f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{little_2008_copy_df_path}", index=False)
+little_2008_copy_df.to_csv(
+    f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{little_2008_copy_df_path}", index=False)
 little_2008_cols_to_retain = ['name', 'MDVP:Jitter(%)', 'MDVP:Jitter(Abs)', 'MDVP:RAP',
                               'MDVP:PPQ', 'Shimmer:APQ3', 'Shimmer:APQ5', 'MDVP:APQ', 'status']
-process_csv(little_2008_copy_df_path, little_2008_cols_to_retain, NEW_COL_NAMES)
+process_csv(little_2008_copy_df_path,
+            little_2008_cols_to_retain, NEW_COL_NAMES)
 
 little_2009_csv_path = 'Little_2009/parkinsons_updrs_processed.csv'
 little_2009_cols_to_retain = ['subject#', 'Jitter(%)', 'Jitter(Abs)', 'Jitter:RAP', 'Jitter:PPQ5',
@@ -86,12 +89,14 @@ process_csv(naranjo_2016_csv_path, naranjo_2016_cols_to_retain, NEW_COL_NAMES)
 sakar_2013_train_csv_path = 'Sakar_et_al_2013/train_data_processed.csv'
 sakar_2013_train_cols_to_retain = ['Subject_id', 'Jitter_local', 'Jitter_local_absolute', 'Jitter_rap',
                                    'Jitter_ppq5', 'Shimmer_apq3', 'Shimmer_apq5', 'Shimmer_apq11', 'status']
-process_csv(sakar_2013_train_csv_path, sakar_2013_train_cols_to_retain, NEW_COL_NAMES)
+process_csv(sakar_2013_train_csv_path,
+            sakar_2013_train_cols_to_retain, NEW_COL_NAMES)
 
 sakar_2013_test_csv_path = 'Sakar_et_al_2013/test_data_processed.csv'
 sakar_2013_test_cols_to_retain = ['Subject_id', 'Jitter_local', 'Jitter_local_absolute', 'Jitter_rap',
                                   'Jitter_ppq5', 'Shimmer_apq3', 'Shimmer_apq5', 'Shimmer_apq11', 'status']
-process_csv(sakar_2013_test_csv_path, sakar_2013_test_cols_to_retain, NEW_COL_NAMES)
+process_csv(sakar_2013_test_csv_path,
+            sakar_2013_test_cols_to_retain, NEW_COL_NAMES)
 
 sakar_2018_csv_path = 'Sakar_et_al_2018/pd_speech_features_processed.csv'
 sakar_2018_cols_to_retain = ['id', 'locPctJitter', 'locAbsJitter', 'rapJitter', 'ppq5Jitter', 'apq3Shimmer',

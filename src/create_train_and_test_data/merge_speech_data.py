@@ -14,7 +14,6 @@ import pandas as pd
 from src.get_src_dir import get_src_path
 from src.process_data.constants import DATA_DIR_STR
 
-
 root_dir_str = str(get_src_path())
 
 file_paths = {
@@ -29,10 +28,12 @@ file_paths = {
 dfs = {}
 for key, file_path in file_paths.items():
     df_name = key.replace("_csv_path", "_df")
-    dfs[df_name] = pd.read_csv(f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{file_path}")
+    dfs[df_name] = pd.read_csv(
+        f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{file_path}")
 
 train_data = pd.concat(
-    [dfs['little_2008_df'], dfs['little_2009_df'], dfs['naranjo_2016_df'], dfs['sakar_2013_train_df'], dfs['sakar_2013_test_df']]
+    [dfs['little_2008_df'], dfs['little_2009_df'], dfs['naranjo_2016_df'],
+        dfs['sakar_2013_train_df'], dfs['sakar_2013_test_df']]
 ).dropna()
 
 test_data = dfs['sakar_2018_df'].dropna()

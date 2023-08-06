@@ -1,5 +1,6 @@
 # Cassandra and Machine Learning-driven Parkinson's Disease Detector
 This repository hosts Python codes to detect Parkinson's Disease leveraging speech data, Apache Cassandra's vector search similarity, and ensembles of Decision Trees.
+These codes have been produced as a part of the final MSc Computing project at the University of Essex in the UK.
 
 ## Setup
 

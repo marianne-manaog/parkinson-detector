@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "pd_detector"
 authors = [
-    {name = "Marianne Lyne Manaog", email = "marianne.manaog@ieee.org"},
+    {name = "Marianne Lyne Manaog", email = "manaog.mariannelyne@gmail.com"},
 ]
 description = "AI-driven, Cassandra-based Parkinson's Disease detector"
 readme = "README.md"
