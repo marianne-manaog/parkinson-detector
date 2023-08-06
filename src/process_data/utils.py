@@ -66,5 +66,6 @@ def save_processed_df(
                 The processed file name's suffix ('_processed' by default).
     """
     processed_df.to_csv(
-        f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{initial_file_path.split('.')[0]}{processed_suffix}{CSV_FMT_STR}"
+        f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{initial_file_path.split('.')[0]}{processed_suffix}{CSV_FMT_STR}",
+        index=False
     )

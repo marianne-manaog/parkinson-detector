@@ -27,6 +27,9 @@ To activate this environment, please run:
 
 `conda activate pd_detector`
 
+To install and build the codes as a Python package in editable mode from the top-level directory:
+`pip install -e .`
+
 To deactivate an active environment, please run the following command:
 
 `conda deactivate`

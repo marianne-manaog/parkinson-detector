@@ -12,6 +12,8 @@ from src.get_src_dir import get_src_path
 from src.process_data.constants import DATA_DIR_STR
 
 
+logging.basicConfig(level=logging.INFO)
+
 root_dir_str = str(get_src_path())
 
 
