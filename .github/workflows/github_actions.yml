@@ -1,0 +1,48 @@
+name: CI/CD pipeline
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Create and activate conda env
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+          miniconda-version: "latest"
+          channels: conda, conda-forge, defaults
+          activate-environment: pd-detector
+          environment-file: environment.yml
+          auto-activate-base: false
+          auto-update-conda: true
+          use-only-tar-bz2: true
+    - name: List conda env info and installed packages
+      run: |
+          conda info
+          conda list
+    - name: Run isort for linting imports to ensure their correct and consistent ordering
+      run: |
+        isort $(git ls-files '*.py')
+    - name: Run autopep8 for linting codes to ensure adherence to PEP8
+      run: |
+        autopep8 --in-place --aggressive --aggressive $(git ls-files '*.py')
+    - name: Code quality analysis via pylint
+      run: |
+        pylint $(git ls-files '*.py') --disable=W1203
+#    - name: Run unit tests via pytest
+#      run: |
+#        pytest --cov-report term-missing --cov=src --cov-config=.coveragerc tests
+    - name: Run bandit for a scan of security vulnerabilities in the project's dependencies
+      run: |
+        bandit --ini .bandit

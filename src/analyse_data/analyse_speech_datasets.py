@@ -13,12 +13,13 @@ from src.process_data.constants import DATA_DIR_STR
 
 logging.basicConfig(level=logging.INFO)
 
-root_dir_str = str(get_src_path())
+ROOT_DIR_STR = str(get_src_path())
 
 
 def analyse_dataset(csv_path: str) -> None:
     """
-    Analyse a speech dataset and log its key characteristics, such as column names, descriptive statistics and
+    Analyse a speech dataset and log its key characteristics,
+    such as column names, descriptive statistics and
     which columns have missing values.
 
     Args:
@@ -41,11 +42,12 @@ def analyse_dataset(csv_path: str) -> None:
     if len(list_cols_nan) > 0:
         logging.info(f"The missing values of the df are: {list_cols_nan}.")
     else:
-        logging.info(f"There are no columns with missing values.")
+        logging.info("There are no columns with missing values.")
 
     # 'status' column (0 = healthy, 1 = PD)
     logging.info(
-        f"The number of healthy vs PD subjects of the df is: {data_df[TARGET_COL_NAME].value_counts()}.")
+        f"The number of healthy vs PD subjects of the "
+        f"df is: {data_df[TARGET_COL_NAME].value_counts()}.")
 
 
 if __name__ == '__main__':
@@ -55,9 +57,8 @@ if __name__ == '__main__':
         'Naranjo_et_al_2016/ReplicatedAcousticFeatures-ParkinsonDatabase_processed.csv',
         'Sakar_et_al_2013/train_data_processed.csv',
         'Sakar_et_al_2013/test_data_processed.csv',
-        'Sakar_et_al_2018/pd_speech_features_processed.csv'
-    ]
+        'Sakar_et_al_2018/pd_speech_features_processed.csv']
 
     for file_path in list_of_paths_of_files_to_analyse:
         analyse_dataset(
-            f"{root_dir_str}{os.sep}{DATA_DIR_STR}{os.sep}{file_path}")
+            f"{ROOT_DIR_STR}{os.sep}{DATA_DIR_STR}{os.sep}{file_path}")

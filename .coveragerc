@@ -1,0 +1,11 @@
+[run]
+source = src
+
+[report]
+omit =
+    */__init__.py
+    */constants.py
+    src/analyse_data/analyse_speech_datasets.py
+
+exclude_lines =
+    pragma: no cover
