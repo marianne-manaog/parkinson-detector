@@ -5,7 +5,6 @@ channels:
   - conda-forge
 dependencies:
   - autopep8=1.6.0
-  - bandit=1.7.5
   - isort=5.9.3
   - pandas=2.0.3
   - pip=23.2.1
@@ -14,3 +13,5 @@ dependencies:
   - pytest-cov=4.0.0
   - python=3.11.4
   - setuptools=68.0.0
+  - pip:
+    - bandit==1.7.5
