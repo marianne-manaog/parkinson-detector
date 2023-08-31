@@ -40,9 +40,9 @@ jobs:
     - name: Code quality analysis via pylint
       run: |
         pylint $(git ls-files '*.py') --disable=W1203
-#    - name: Run unit tests via pytest
-#      run: |
-#        pytest --cov-report term-missing --cov=src --cov-config=.coveragerc tests
+    - name: Run unit tests via pytest
+      run: |
+        pytest --cov-report term-missing --cov=src --cov-config=.coveragerc tests
     - name: Run bandit for a scan of security vulnerabilities in the project's dependencies
       run: |
         bandit --ini .bandit

@@ -1,3 +1,5 @@
+"""Tests for the prepare_data module"""
+
 import os
 import unittest
 from unittest.mock import patch
@@ -21,8 +23,10 @@ test_df = pd.DataFrame(
 
 
 class TestPrepareData(unittest.TestCase):
+    """Test class for the prepare_data module"""
 
     def setUp(self) -> None:
+        """setUp method initialising and serving dummy data for tests"""
         self.first_col_name = test_df.columns[0]
         self.second_col_name = test_df.columns[1]
 
@@ -37,6 +41,7 @@ class TestPrepareData(unittest.TestCase):
     @patch('src.process_data.prepare_data.pd.read_csv', return_value=test_df)
     @patch('src.process_data.prepare_data.pd.DataFrame.to_csv')
     def test_process_csv(self, mock_to_csv, mock_read_csv):
+        """Tests to ensure df is processed with correctly renamed columns"""
         dummy_path = 'tmp/dummy_df.csv'
         full_dummy_path = f"{ROOT_DIR_STR}{os.sep}{DATA_DIR_STR}{os.sep}{dummy_path}"
         process_csv(

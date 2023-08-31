@@ -65,7 +65,7 @@ def add_target_column(
 def save_processed_df(
         initial_file_path: str,
         processed_df: pd.DataFrame,
-        processed_suffix: str = PROCESSED_SUFFIX) -> None:
+        processed_suffix: str = PROCESSED_SUFFIX) -> None:  # pragma: no cover
     """
     Save the processed df to a csv file and add a suffix to differentiate it from the initial file.
 
