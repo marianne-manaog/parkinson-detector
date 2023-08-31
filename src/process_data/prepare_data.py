@@ -13,7 +13,7 @@ from src.process_data.utils import add_target_column, save_processed_df
 ROOT_DIR_STR = str(get_src_path())
 
 
-def generate_and_save_initial_processed_files() -> None:
+def generate_and_save_initial_processed_files() -> None:  # pragma: no cover
     """
     Generate and save the initial processed files to ensure that
     they have the same target column name ('status', as
@@ -42,9 +42,6 @@ def generate_and_save_initial_processed_files() -> None:
     save_processed_df(sakar_2018_csv_path, sakar_2018_df_processed)
 
 
-generate_and_save_initial_processed_files()
-
-
 def process_csv(
         csv_file_path: str,
         cols_to_retain: list[str],
@@ -64,95 +61,108 @@ def process_csv(
     csv_full_path = f"{ROOT_DIR_STR}{os.sep}{DATA_DIR_STR}{os.sep}{csv_file_path}"
     data_df = pd.read_csv(csv_full_path)
     data_df = data_df[cols_to_retain]
-    data_df.rename(columns=dict(zip(cols_to_retain, new_column_names)), inplace=True)
+    data_df.rename(columns=dict(
+        zip(cols_to_retain, new_column_names)), inplace=True)
     data_df.to_csv(csv_full_path, index=False)
 
 
-# Process all speech datasets
-LITTLE_2008_CSV_PATH = 'Little_2008/parkinsons_data.csv'
-little_2008_copy_df = pd.read_csv(
-    f"{ROOT_DIR_STR}{os.sep}{DATA_DIR_STR}{os.sep}{LITTLE_2008_CSV_PATH}")
-LITTLE_2008_COPY_DF_PATH = 'Little_2008/parkinsons_data_processed.csv'
-little_2008_copy_df.to_csv(
-    f"{ROOT_DIR_STR}{os.sep}{DATA_DIR_STR}{os.sep}{LITTLE_2008_COPY_DF_PATH}",
-    index=False)
-little_2008_cols_to_retain = [
-    'name',
-    'MDVP:Jitter(%)',
-    'MDVP:Jitter(Abs)',
-    'MDVP:RAP',
-    'MDVP:PPQ',
-    'Shimmer:APQ3',
-    'Shimmer:APQ5',
-    'MDVP:APQ',
-    'status']
-process_csv(LITTLE_2008_COPY_DF_PATH,
-            little_2008_cols_to_retain, NEW_COL_NAMES)
+def process_speech_datasets() -> None:  # pragma: no cover
+    """Process all speech datasets"""
+    little_2008_csv_path = 'Little_2008/parkinsons_data.csv'
+    little_2008_copy_df = pd.read_csv(
+        f"{ROOT_DIR_STR}{os.sep}{DATA_DIR_STR}{os.sep}{little_2008_csv_path}")
+    little_2008_copy_df_path = 'Little_2008/parkinsons_data_processed.csv'
+    little_2008_copy_df.to_csv(
+        f"{ROOT_DIR_STR}{os.sep}{DATA_DIR_STR}{os.sep}{little_2008_copy_df_path}",
+        index=False)
+    little_2008_cols_to_retain = [
+        'name',
+        'MDVP:Jitter(%)',
+        'MDVP:Jitter(Abs)',
+        'MDVP:RAP',
+        'MDVP:PPQ',
+        'Shimmer:APQ3',
+        'Shimmer:APQ5',
+        'MDVP:APQ',
+        'status']
+    process_csv(little_2008_copy_df_path,
+                little_2008_cols_to_retain, NEW_COL_NAMES)
 
-LITTLE_2009_CSV_PATH = 'Little_2009/parkinsons_updrs_processed.csv'
-little_2009_cols_to_retain = [
-    'subject#',
-    'Jitter(%)',
-    'Jitter(Abs)',
-    'Jitter:RAP',
-    'Jitter:PPQ5',
-    'Shimmer:APQ3',
-    'Shimmer:APQ5',
-    'Shimmer:APQ11',
-    'status']
-process_csv(LITTLE_2009_CSV_PATH, little_2009_cols_to_retain, NEW_COL_NAMES)
+    little_2009_csv_path = 'Little_2009/parkinsons_updrs_processed.csv'
+    little_2009_cols_to_retain = [
+        'subject#',
+        'Jitter(%)',
+        'Jitter(Abs)',
+        'Jitter:RAP',
+        'Jitter:PPQ5',
+        'Shimmer:APQ3',
+        'Shimmer:APQ5',
+        'Shimmer:APQ11',
+        'status']
+    process_csv(
+        little_2009_csv_path,
+        little_2009_cols_to_retain,
+        NEW_COL_NAMES)
 
-NARANJO_2016_CSV_PATH = \
-    'Naranjo_et_al_2016/ReplicatedAcousticFeatures-ParkinsonDatabase_processed.csv'
-naranjo_2016_cols_to_retain = [
-    'ID',
-    'Jitter_rel',
-    'Jitter_abs',
-    'Jitter_RAP',
-    'Jitter_PPQ',
-    'Shim_APQ3',
-    'Shim_APQ5',
-    'Shi_APQ11',
-    'status']
-process_csv(NARANJO_2016_CSV_PATH, naranjo_2016_cols_to_retain, NEW_COL_NAMES)
+    naranjo_2016_csv_path = \
+        'Naranjo_et_al_2016/ReplicatedAcousticFeatures-ParkinsonDatabase_processed.csv'
+    naranjo_2016_cols_to_retain = [
+        'ID',
+        'Jitter_rel',
+        'Jitter_abs',
+        'Jitter_RAP',
+        'Jitter_PPQ',
+        'Shim_APQ3',
+        'Shim_APQ5',
+        'Shi_APQ11',
+        'status']
+    process_csv(
+        naranjo_2016_csv_path,
+        naranjo_2016_cols_to_retain,
+        NEW_COL_NAMES)
 
-SAKAR_2013_TRAIN_CSV_PATH = 'Sakar_et_al_2013/train_data_processed.csv'
-sakar_2013_train_cols_to_retain = [
-    'Subject_id',
-    'Jitter_local',
-    'Jitter_local_absolute',
-    'Jitter_rap',
-    'Jitter_ppq5',
-    'Shimmer_apq3',
-    'Shimmer_apq5',
-    'Shimmer_apq11',
-    'status']
-process_csv(SAKAR_2013_TRAIN_CSV_PATH,
-            sakar_2013_train_cols_to_retain, NEW_COL_NAMES)
+    sakar_2013_train_csv_path = 'Sakar_et_al_2013/train_data_processed.csv'
+    sakar_2013_train_cols_to_retain = [
+        'Subject_id',
+        'Jitter_local',
+        'Jitter_local_absolute',
+        'Jitter_rap',
+        'Jitter_ppq5',
+        'Shimmer_apq3',
+        'Shimmer_apq5',
+        'Shimmer_apq11',
+        'status']
+    process_csv(sakar_2013_train_csv_path,
+                sakar_2013_train_cols_to_retain, NEW_COL_NAMES)
 
-SAKAR_2013_TEST_CSV_PATH = 'Sakar_et_al_2013/test_data_processed.csv'
-sakar_2013_test_cols_to_retain = [
-    'Subject_id',
-    'Jitter_local',
-    'Jitter_local_absolute',
-    'Jitter_rap',
-    'Jitter_ppq5',
-    'Shimmer_apq3',
-    'Shimmer_apq5',
-    'Shimmer_apq11',
-    'status']
-process_csv(SAKAR_2013_TEST_CSV_PATH,
-            sakar_2013_test_cols_to_retain, NEW_COL_NAMES)
+    sakar_2013_test_csv_path = 'Sakar_et_al_2013/test_data_processed.csv'
+    sakar_2013_test_cols_to_retain = [
+        'Subject_id',
+        'Jitter_local',
+        'Jitter_local_absolute',
+        'Jitter_rap',
+        'Jitter_ppq5',
+        'Shimmer_apq3',
+        'Shimmer_apq5',
+        'Shimmer_apq11',
+        'status']
+    process_csv(sakar_2013_test_csv_path,
+                sakar_2013_test_cols_to_retain, NEW_COL_NAMES)
 
-SAKAR_2018_CSV_PATH = 'Sakar_et_al_2018/pd_speech_features_processed.csv'
-sakar_2018_cols_to_retain = [
-    'id',
-    'locPctJitter',
-    'locAbsJitter',
-    'rapJitter',
-    'ppq5Jitter',
-    'apq3Shimmer',
-    'apq5Shimmer',
-    'apq11Shimmer',
-    'status']
-process_csv(SAKAR_2018_CSV_PATH, sakar_2018_cols_to_retain, NEW_COL_NAMES)
+    sakar_2018_csv_path = 'Sakar_et_al_2018/pd_speech_features_processed.csv'
+    sakar_2018_cols_to_retain = [
+        'id',
+        'locPctJitter',
+        'locAbsJitter',
+        'rapJitter',
+        'ppq5Jitter',
+        'apq3Shimmer',
+        'apq5Shimmer',
+        'apq11Shimmer',
+        'status']
+    process_csv(sakar_2018_csv_path, sakar_2018_cols_to_retain, NEW_COL_NAMES)
+
+
+if __name__ == '__main__':
+    generate_and_save_initial_processed_files()
+    process_speech_datasets()
