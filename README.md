@@ -30,6 +30,10 @@ To deactivate an active environment, please run the following command:
 
 `conda deactivate`
 
+To remove the environment after deactivating it:
+
+`conda remove env --name pd_detector --all -y`
+
 ## Datasets
 Five speech-related datasets are used in this project. These files are taken from the University California Irvine
 Machine Learning repository (Little, 2008, 2009; Naranjo et al., 2016; Sakar et al., 2013; Sakar et al., 2018) and 
@@ -43,6 +47,11 @@ ensures the target column `status` is named consistently (`1` for patients with 
 `0` for healthy subjects), that only the relevant columns are retained and that are renamed consistently too.
 - Eventually, the data are combined into two sets (train and test) via the module 
 `src/create_train_and_test_data/merge_speech_data.py`.
+
+## GitHub Actions for CI/CD
+The test coverage, along with linting/quality checks, are run automatically via GitHub Actions for CI/CD as per 
+the pipeline defined at `.github/workflows/github_actions.yml`. Thus, the linting, test coverage 
+reports, and security scans are conveniently and transparently available in the builds directly on GitHub.
 
 ## References
 

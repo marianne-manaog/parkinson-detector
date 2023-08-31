@@ -1,12 +1,17 @@
 name: pd_detector
 channels:
+  - defaults
   - conda
+  - conda-forge
 dependencies:
   - autopep8=1.6.0
   - isort=5.9.3
-  - pandas=1.5.3
-  - pip=23.1.2
-  - pytest=7.3.1
+  - pandas=2.0.3
+  - pip=23.2.1
+  - pylint=2.16.2
+  - pytest=7.4.0
   - pytest-cov=4.0.0
   - python=3.11.4
-  - setuptools=67.8.0
+  - setuptools=68.0.0
+  - pip:
+    - bandit==1.7.5
