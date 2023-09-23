@@ -136,7 +136,7 @@ cython_debug/
 *.egg-info
 
 # Mac-related
-*/.DS_Store
+.DS_Store
 
 # Apache Cassandra-related folder
 notebooks/apache-cassandra-4.1.3
