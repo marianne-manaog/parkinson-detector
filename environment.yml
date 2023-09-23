@@ -13,6 +13,7 @@ dependencies:
   - pytest=7.4.0
   - pytest-cov=4.0.0
   - python=3.11.4
+  - scipy=1.11.1
   - setuptools=68.0.0
   - pip:
     - bandit==1.7.5
