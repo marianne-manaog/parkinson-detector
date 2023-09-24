@@ -8,8 +8,8 @@ import pandas as pd
 
 from src.constants import TARGET_COL_NAME
 from src.get_src_dir import get_src_path
-from src.process_data.constants import (CSV_FMT_STR, DATA_DIR_STR,
-                                        PROCESSED_SUFFIX)
+from src.process_data.constants import (COLS_TO_RETAIN, CSV_FMT_STR,
+                                        DATA_DIR_STR, PROCESSED_SUFFIX)
 
 ROOT_DIR_STR = str(get_src_path())
 
@@ -60,6 +60,27 @@ def add_target_column(
         updated_df[target_col_name] = [1] * len(initial_df)
 
     return updated_df
+
+
+def retain_selected_cols(
+        input_df: pd.DataFrame,
+        cols_to_retain: list[str] = COLS_TO_RETAIN
+) -> pd.DataFrame:
+    """Retain selected columns in a df.
+
+    Args:
+        input_df: pd.DataFrame
+            The df to slice.
+        cols_to_retain: list[str]
+            A list of columns to retain.
+
+    Returns:
+        The sliced df with selected columns.
+    """
+
+    df_w_selected_cols = input_df.copy()
+    df_w_selected_cols = df_w_selected_cols[cols_to_retain]
+    return df_w_selected_cols
 
 
 def save_processed_df(

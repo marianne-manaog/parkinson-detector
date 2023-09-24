@@ -1,3 +1,3 @@
 """Init of the process_data module"""
 
-from . import prepare_data, utils
+from . import balance_classes, prepare_data, remove_outliers, utils

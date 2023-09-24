@@ -5,13 +5,18 @@ channels:
   - conda-forge
 dependencies:
   - autopep8=1.6.0
+  - ipykernel=6.25.0
   - isort=5.9.3
+  - matplotlib=3.7.2
   - pandas=2.0.3
   - pip=23.2.1
   - pylint=2.16.2
   - pytest=7.4.0
   - pytest-cov=4.0.0
   - python=3.11.4
+  - scikit-learn=1.2.2
+  - scipy=1.11.1
   - setuptools=68.0.0
   - pip:
     - bandit==1.7.5
+    - cassandra-driver==3.28.0

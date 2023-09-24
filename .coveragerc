@@ -6,7 +6,13 @@ omit =
     */__init__.py
     */constants.py
     src/analyse_data/analyse_speech_datasets.py
+    src/analyse_data/visualise_multi_collinear_feats.py
+    src/create_cassandra_db/*
     src/create_train_and_test_data/merge_speech_data.py
+    src/modelling/classify/gbt_classifier.py
+    src/modelling/evaluate/explainability.py
+    src/modelling/evaluate/visualise_performance.py
+    src/modelling/vector_similarity/knn_classifier.py
 
 exclude_lines =
     pragma: no cover

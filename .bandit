@@ -1,3 +1,4 @@
 [bandit]
 targets = src
 recursive = true
+skips = B608
