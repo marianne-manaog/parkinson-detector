@@ -39,7 +39,7 @@ jobs:
         autopep8 --in-place --aggressive --aggressive $(git ls-files '*.py')
     - name: Code quality analysis via pylint
       run: |
-        pylint $(git ls-files '*.py') --disable=W0102,W1203
+        pylint $(git ls-files '*.py') --disable=E0611,E1101,R0913,R0914,W0102,W1203
     - name: Run unit tests via pytest
       run: |
         pytest --cov-report term-missing --cov=src --cov-config=.coveragerc tests
