@@ -23,7 +23,7 @@ class TestBalanceSamplesPerClass(unittest.TestCase):
             TARGET_COL_NAME: np.random.choice([0, 1], size=whole_size)
         }
         self.sample_df = pd.DataFrame(self.sample_data)
-        partial_size = int(whole_size/5)
+        partial_size = int(whole_size / 5)
         unbalanced_data = {
             # Fewer samples in class 1
             'feature1': np.random.rand(partial_size),

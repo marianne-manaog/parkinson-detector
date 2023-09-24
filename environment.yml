@@ -17,3 +17,4 @@ dependencies:
   - setuptools=68.0.0
   - pip:
     - bandit==1.7.5
+    - cassandra-driver==3.28.0
