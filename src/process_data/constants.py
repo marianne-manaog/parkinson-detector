@@ -15,3 +15,5 @@ RANDOM_STATE = 0
 
 # Z-score threshold to identify and remove outliers
 Z_SCORE_THRESH = 3
+
+COLS_TO_RETAIN = ['subject_id', 'apq_11', 'apq_3', 'jitter_percent', 'status']
