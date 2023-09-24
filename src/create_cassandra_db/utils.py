@@ -5,7 +5,7 @@ import pandas as pd
 from cassandra.cluster import Cluster, Session
 from cassandra.policies import DCAwareRoundRobinPolicy
 
-from constants import DEFAULT_LOCAL_IP, KEYSPACE_NAME, PROTOCOL_VERSION_NUM
+from .constants import DEFAULT_LOCAL_IP, KEYSPACE_NAME, PROTOCOL_VERSION_NUM
 
 
 def create_session(ip_address: str = DEFAULT_LOCAL_IP) -> Session:

@@ -3,7 +3,7 @@ tables in Apache Cassandra"""
 
 from cassandra.cluster import Session
 
-from constants import ENCODING
+from .constants import ENCODING
 
 
 def create_table(
